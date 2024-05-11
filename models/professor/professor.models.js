@@ -40,14 +40,19 @@ const ProfessorSchema = new schema(
       type: [
         {
           studiantId: String,
-
-          value: String,
+          valueNote: Number,
           timestamp: Number,
         },
       ],
       required: true,
-
+    },
+    name: {
+      // Ajout de l'objet name
+      type: String,
       required: true,
+      default: function () {
+        return `${this.firstName} ${this.lastName}`;
+      },
     },
   },
   {

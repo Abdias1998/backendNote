@@ -62,7 +62,7 @@ module.exports.loginStudiant = async (req, res, next) => {
   }
   if (!existingUser) {
     return res.status(401).json({
-      message: "L'élève avec cet   identifiant n'existe pas !",
+      message: "L'étudiant avec cet identifiant n'existe pas !",
     });
   }
 

@@ -6,5 +6,9 @@ router.post(
   "/addRatingToProfessor/:professorId",
   professorControler.addRatingToProfessor
 );
+router.get(
+  "/getNoteStudant/:professorId/:studiantId",
+  professorControler.getStudentRating
+);
 
 module.exports = router;
