@@ -15,7 +15,7 @@ module.exports.createProfessor = async (req, res) => {
     const newUser = new User({
       etat,
       firstName,
-      name: toUpperCase(firstName),
+      name: `${toUpperCase(firstName)} ${lastName}`,
       lastName,
       classe,
       serie,

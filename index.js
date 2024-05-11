@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const StudiantRoutes = require("./routes/studiant/studiant.routes");
 const ProfessorRoutes = require("./routes/professor/professor.routes");
+const AdminRoutes = require("./routes/admin/admin.routes");
 // const csrf = require("csurf");
 require("./config/db");
 const cors = require("cors");
@@ -49,6 +50,7 @@ app.get("/", function (req, res) {
 // routes
 app.use("/api/user", StudiantRoutes);
 app.use("/api/prof", ProfessorRoutes);
+app.use("/api/admin", AdminRoutes);
 const crypto = require("crypto");
 const dateElements = crypto.randomBytes(2).toString("hex");
 
@@ -56,6 +58,9 @@ console.log(dateElements);
 app.use(express.static(path.join(__dirname, "./client")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/dashboard.html"));
 });
 
 app.listen(process.env.PORT || 7500, () => console.log(`Back is running`));

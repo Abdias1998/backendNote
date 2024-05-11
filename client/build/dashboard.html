@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau de bord</title>
+    <link rel="stylesheet" href="./styles/dashboard.css" />
+  </head>
+  <body>
+    <div class="navbar" id="navbar">
+      <div class="menu-icon" onclick="toggleNavbar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Profil</a></li>
+        <li><a href="#">Paramètres</a></li>
+        <li><a href="#">Déconnexion</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <h2>Bienvenue sur votre tableau de bord</h2>
+      <!-- Vos contenus ici -->
+    </div>
+  <div class="grid-container">
+    <div class="form1">
+      <h3>Formulaire 1</h3>
+      <form id="form1">
+        <input type="text" id="etat" placeholder="État" required>
+        <input type="text" id="firstName" placeholder="Prénom" required>
+        <input type="text" id="lastName" placeholder="Nom" required>
+        <!-- Ajoutez d'autres champs ici -->
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+    <div class="form2">
+      <h3>Formulaire 2</h3>
+      <form id="form2">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="etat" placeholder="État" required>
+        <input type="text" id="firstName" placeholder="Prénom" required>
+        <input type="text" id="lastName" placeholder="Nom" required>
+        <!-- Ajoutez d'autres champs ici -->
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+    <div class="form3">
+      <h3>Formulaire 3</h3>
+      <form id="form3">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Mot de passe" required>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+    <div class="chart">
+      <h3>Chart</h3>
+      <!-- Composant de chart -->
+    </div>
+  </div>
+    <script src="./js/dashboard.js"></script>
+  </body>
+</html>
+
+
+</html>
