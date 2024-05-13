@@ -107,13 +107,13 @@ module.exports.addRatingToProfessor = async (req, res) => {
       return res.status(404).json({ message: "Professeur non trouvé." });
     }
 
-    // Vérifier si l'étudiant a déjà voté
+    // Vérifier si l'étudiant a déjà noté
     const alreadyVoted = professor.rating.some(
       (vote) => vote.studiantId === studiantId
     );
     if (alreadyVoted) {
       return res.status(400).json({
-        message: `Vous aviez déjà voté pour le professeur ${professor.name}`,
+        message: `Vous aviez déjà noté pour le professeur ${professor.name},notez les autres puis allez sur la page Statistiques pour voir le classement`,
       });
     }
 
