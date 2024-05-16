@@ -10,5 +10,6 @@ router.get(
   "/getNoteStudant/:professorId/:studiantId",
   professorControler.getStudentRating
 );
+// router.get("/profs/pdf", pdfController.getProfsPdf);
 
 module.exports = router;

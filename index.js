@@ -51,10 +51,7 @@ app.get("/", function (req, res) {
 app.use("/api/user", StudiantRoutes);
 app.use("/api/prof", ProfessorRoutes);
 app.use("/api/admin", AdminRoutes);
-const crypto = require("crypto");
-const dateElements = crypto.randomBytes(2).toString("hex");
 
-console.log(dateElements);
 app.use(express.static(path.join(__dirname, "./client")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));

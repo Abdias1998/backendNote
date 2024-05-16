@@ -113,7 +113,7 @@ module.exports.addRatingToProfessor = async (req, res) => {
     );
     if (alreadyVoted) {
       return res.status(400).json({
-        message: `Vous aviez déjà noté pour le professeur ${professor.name},notez les autres puis allez sur la page Statistiques pour voir le classement`,
+        message: `Vous aviez déjà noté pour le professeur ${professor.name}`,
       });
     }
 

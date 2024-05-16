@@ -4,6 +4,14 @@ const schema = mongoose.Schema;
 
 const ProfessorSchema = new schema(
   {
+    name: {
+      // Ajout de l'objet name
+      type: String,
+      required: true,
+      default: function () {
+        return `${this.firstName} ${this.lastName}`;
+      },
+    },
     firstName: {
       required: true,
       type: String,
@@ -45,14 +53,6 @@ const ProfessorSchema = new schema(
         },
       ],
       required: true,
-    },
-    name: {
-      // Ajout de l'objet name
-      type: String,
-      required: true,
-      default: function () {
-        return `${this.firstName} ${this.lastName}`;
-      },
     },
   },
   {
