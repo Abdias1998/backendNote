@@ -38,9 +38,7 @@ module.exports.createStudiant = async (req, res) => {
     });
     await newUser.save();
 
-    res
-      .status(201)
-      .json({ message: "Utilisateur créé avec succès.", dateElements });
+    res.status(201).json({ message: "Utilisateur créé avec succès.", newUser });
   } catch (error) {
     res.status(500).json({
       message: "Erreur lors de la création de l'utilisateur." + error,

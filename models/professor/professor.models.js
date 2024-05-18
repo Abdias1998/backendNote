@@ -32,6 +32,10 @@ const ProfessorSchema = new schema(
       default: "",
       type: String,
     },
+    bio: {
+      default: "",
+      type: String,
+    },
     cours: {
       required: true,
       type: String,
@@ -50,6 +54,18 @@ const ProfessorSchema = new schema(
           studiantId: String,
           valueNote: Number,
           timestamp: Number,
+        },
+      ],
+      required: true,
+    },
+    comments: {
+      type: [
+        {
+          commentId: String,
+          text: String,
+          timestamp: Number,
+
+          anonyme: Boolean,
         },
       ],
       required: true,

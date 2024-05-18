@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const mongoose = require("mongoose");
 module.exports.createProfessor = async (req, res) => {
-  const { etat, firstName, lastName, classe, sexe, serie, type, cours } =
+  const { etat, firstName, lastName, classe, sexe, serie, bio, type, cours } =
     req.body;
   function toUpperCase(str) {
     // Utiliser la méthode toUpperCase() pour convertir la chaîne en majuscules
@@ -19,10 +19,12 @@ module.exports.createProfessor = async (req, res) => {
       lastName,
       classe,
       serie,
+      bio,
       type,
       sexe,
       cours,
       rating: [],
+      comments: [],
     });
     await newUser.save();
 
@@ -177,5 +179,39 @@ module.exports.getStudentRating = async (req, res) => {
       message:
         "Une erreur est survenue lors de la récupération de la note de l'étudiant",
     });
+  }
+};
+
+module.exports.commentPost = async (req, res) => {
+  // Vérifier si l'ID est valide
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: "ID inconnue " + req.params.id });
+  }
+
+  try {
+    // Mettre à jour l'utilisateur avec le nouveau commentaire
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: {
+          comments: {
+            commentId: req.body.commentId,
+            text: req.body.text,
+            anonyme: req.body.anonyme,
+          },
+        },
+      },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    }
+
+    return res.status(200).json(updatedUser);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "Erreur interne du serveur, réessayez plus tard" });
   }
 };

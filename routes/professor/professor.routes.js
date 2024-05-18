@@ -10,6 +10,7 @@ router.get(
   "/getNoteStudant/:professorId/:studiantId",
   professorControler.getStudentRating
 );
+router.patch("/commentPost/:id", professorControler.commentPost);
 // router.get("/profs/pdf", pdfController.getProfsPdf);
 
 module.exports = router;
