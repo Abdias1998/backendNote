@@ -1,6 +1,7 @@
 require("dotenv").config({ path: "./config/.env" });
 const path = require("path");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 // const cookieParser = require("cookie-parser");
 const express = require("express");
 const StudiantRoutes = require("./routes/studiant/studiant.routes");
@@ -11,7 +12,7 @@ require("./config/db");
 const cors = require("cors");
 
 const app = express();
-
+app.use(cookieParser());
 app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
 app.use(bodyParser.json()); // Transformer les body en json
 app.use(bodyParser.urlencoded({ extended: true }));

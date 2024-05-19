@@ -51,6 +51,20 @@ module.exports.login = async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
+    /* 5 - Envoyer la réponse dans le cookie */
+
+    res.cookie(String("noteHook"), token, {
+      path: `/`, // Path cookie
+      expires: new Date(
+        Date.now() + 24 * 60 * 60 * 1000 * 7
+      ) /**Durée de vie du cookie qui est de 7 jours */,
+      httpOnly: true, //Only server
+      sameSite: `lax`, //cross site, empêcher les réquêtes d'autres domaines
+      secure: true, // https
+    });
+
+    /**Réponse finale quand il est authentifié */
+    return res.status(200).json({ message: `Connection réussie` });
 
     res.status(200).json({ token });
   } catch (error) {
