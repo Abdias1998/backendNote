@@ -80,7 +80,7 @@ module.exports.getProfesseur = async (req, res) => {
     professorsWithStats.sort((a, b) => b.averageRating - a.averageRating);
 
     // Renvoyer les professeurs avec les informations de notation calculées
-    res.json(professorsWithStats);
+    res.status(200).json(professorsWithStats);
   } catch (err) {
     // Gérer les erreurs
     console.error(err);
