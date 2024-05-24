@@ -215,3 +215,26 @@ module.exports.commentPost = async (req, res) => {
       .json({ message: "Erreur interne du serveur, réessayez plus tard" });
   }
 };
+
+// Contrôleur pour supprimer un commentaire
+module.exports.deleteComment = async (req, res) => {
+  const { postId, commentId } = req.params;
+
+  try {
+    // Trouver le post par ID et mettre à jour en supprimant le commentaire par ID
+    const post = await User.findByIdAndUpdate(
+      postId,
+      { $pull: { comments: { _id: commentId } } },
+      { new: true }
+    );
+
+    if (!post) {
+      return res.status(404).json({ message: "Post non trouvé" });
+    }
+
+    res.status(200).json({ message: "Commentaire supprimé avec succès", post });
+  } catch (error) {
+    console.error("Erreur lors de la suppression du commentaire:", error);
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};

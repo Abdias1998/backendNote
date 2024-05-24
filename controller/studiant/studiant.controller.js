@@ -30,6 +30,7 @@ module.exports.createStudiant = async (req, res) => {
       email,
       etat,
       firstName,
+
       lastName,
       serie,
       type,
@@ -38,7 +39,11 @@ module.exports.createStudiant = async (req, res) => {
     });
     await newUser.save();
 
-    res.status(201).json({ message: "Utilisateur créé avec succès.", newUser });
+    return res.status(201).json({
+      message: "Utilisateur créé avec succès.",
+      newUser,
+      dateElements,
+    });
   } catch (error) {
     res.status(500).json({
       message: "Erreur lors de la création de l'utilisateur." + error,

@@ -12,5 +12,8 @@ router.get(
 );
 router.patch("/commentPost/:id", professorControler.commentPost);
 // router.get("/profs/pdf", pdfController.getProfsPdf);
-
+router.delete(
+  "/deletePost/:postId/:commentId",
+  professorControler.deleteComment
+);
 module.exports = router;
